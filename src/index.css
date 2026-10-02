@@ -1,0 +1,149 @@
+@import "tailwindcss";
+
+:root {
+  --bg-primary: #05070d;
+  --bg-secondary: #0a0f1c;
+  --panel-bg: rgb(231, 93, 7);
+  --panel-border: rgba(203, 246, 13, 0.962);
+
+  --p1: #00eaff;
+  --p1-glow: rgba(0, 234, 255, 0.4);
+  --p2: #ff2bd6;
+  --p2-glow: rgba(255, 43, 214, 0.4);
+  --p3: #ffb020;
+  --p3-glow: rgba(255, 176, 32, 0.4);
+  --p4: #19f59a;
+  --p4-glow: rgba(25, 245, 154, 0.4);
+
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+
+  --accent-cyan: #00eaff;
+  --accent-magenta: #ff2bd6;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(0, 234, 255, 0.08) 0%, transparent 60%),
+    radial-gradient(circle at 80% 80%, rgba(255, 43, 214, 0.06) 0%, transparent 50%),
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  user-select: none;
+}
+
+/* Glassmorphism utility classes */
+.glass-panel {
+  background: var(--panel-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--panel-border);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+}
+
+.glass-panel-hover {
+  transition: all 0.2s ease-in-out;
+}
+
+.glass-panel-hover:hover {
+  border-color: rgba(0, 234, 255, 0.4);
+  box-shadow: 0 0 20px rgba(0, 234, 255, 0.2);
+}
+
+/* Neon Text and Glow utility classes */
+.neon-text-cyan {
+  color: var(--p1);
+  text-shadow: 0 0 10px var(--p1-glow), 0 0 20px var(--p1-glow);
+}
+
+.neon-text-magenta {
+  color: var(--p2);
+  text-shadow: 0 0 10px var(--p2-glow), 0 0 20px var(--p2-glow);
+}
+
+.neon-text-amber {
+  color: var(--p3);
+  text-shadow: 0 0 10px var(--p3-glow), 0 0 20px var(--p3-glow);
+}
+
+.neon-text-emerald {
+  color: var(--p4);
+  text-shadow: 0 0 10px var(--p4-glow), 0 0 20px var(--p4-glow);
+}
+
+.neon-border-cyan {
+  border-color: var(--p1);
+  box-shadow: 0 0 12px var(--p1-glow);
+}
+
+.neon-border-magenta {
+  border-color: var(--p2);
+  box-shadow: 0 0 12px var(--p2-glow);
+}
+
+.neon-border-amber {
+  border-color: var(--p3);
+  box-shadow: 0 0 12px var(--p3-glow);
+}
+
+.neon-border-emerald {
+  border-color: var(--p4);
+  box-shadow: 0 0 12px var(--p4-glow);
+}
+
+/* Pulse animation for coach hint */
+@keyframes coach-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 234, 255, 0.7);
+    border-color: rgba(0, 234, 255, 1);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(0, 234, 255, 0);
+    border-color: rgba(0, 234, 255, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 234, 255, 0);
+    border-color: rgba(0, 234, 255, 1);
+  }
+}
+
+.coach-hint-cell {
+  animation: coach-pulse 1.8s infinite;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(10, 15, 28, 0.8);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(56, 189, 248, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(56, 189, 248, 0.6);
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
